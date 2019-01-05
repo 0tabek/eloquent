@@ -136,12 +136,34 @@ function nth(list, n) {
 // // → 20
 
 
-// Ex2: Deep comparison
+// Ex4: Deep comparison
+let obj = {here: {is: "an"}, object: 2};
+let obj2 = {here: {is: "a"}, object: 2};
+let obj3 = {al: 1 , he: 2};
 
-// let obj = {here: {is: "an"}, object: 2};
-// console.log(deepEqual(obj, obj));
-// // → true
+
+function deepEqual(a, b) {
+  if (a === b) return true;
+
+  if (a == null || typeof a != "object" ||
+      b == null || typeof b != "object") return false;
+
+  let keysA = Object.keys(a), keysB = Object.keys(b);
+
+  if (keysA.length != keysB.length) return false;
+
+  for (let key of keysA) {
+    if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false;
+  }
+
+  return true;
+}
+
+
+
+
+console.log(deepEqual(obj, obj));
+//
+// console.log(deepEqual(obj, {al: 1, object: 2}));
+//
 // console.log(deepEqual(obj, {here: 1, object: 2}));
-// // → false
-// console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
-// → true
