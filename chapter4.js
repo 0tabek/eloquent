@@ -160,9 +160,7 @@ function deepEqual(a, b) {
 }
 
 
-
-
-console.log(deepEqual(obj, obj));
+// console.log(deepEqual(obj, obj));
 //
 // console.log(deepEqual(obj, {al: 1, object: 2}));
 //
